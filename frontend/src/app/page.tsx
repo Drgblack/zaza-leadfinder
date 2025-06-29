@@ -56,6 +56,7 @@ export default function Home() {
         <br /><br />
         <button type="submit">Submit</button>
       </form>
+<p style={{ fontSize: "0.8rem", color: "#888" }}>Build: {new Date().toLocaleDateString()}</p>
     </main>
   );
 }
