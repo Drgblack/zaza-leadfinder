@@ -1,5 +1,6 @@
 {
-  "rewrites": [],
-  "redirects": [],
-  "headers": []
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/.next",
+  "framework": "nextjs",
+  "rootDirectory": "frontend"
 }
