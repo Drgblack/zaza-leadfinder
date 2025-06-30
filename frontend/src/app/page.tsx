@@ -1,5 +1,4 @@
 'use client';
-
 import { useState } from "react";
 
 export default function Home() {
@@ -15,12 +14,23 @@ export default function Home() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await fetch("/api/submit", {
+    const res = await fetch("/api/leads", {  // Fixed: Changed from "/api/submit" to "/api/leads"
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
-    alert(res.ok ? "Submitted!" : "Failed to submit.");
+    
+    if (res.ok) {
+      alert("Lead submitted successfully!");
+      // Clear the form after successful submission
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+      });
+    } else {
+      alert("Failed to submit lead.");
+    }
   };
 
   return (
@@ -56,7 +66,7 @@ export default function Home() {
         <br /><br />
         <button type="submit">Submit</button>
       </form>
-<p style={{ fontSize: "0.8rem", color: "#888" }}>Build: {new Date().toLocaleDateString()}</p>
+      <p style={{ fontSize: "0.8rem", color: "#888" }}>Build: {new Date().toLocaleDateString()}</p>
     </main>
   );
 }
